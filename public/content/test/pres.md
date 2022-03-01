@@ -1,8 +1,3 @@
-title:
-cover:
-name:
-
----
 
 # Hello World
 
