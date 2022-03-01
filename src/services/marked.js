@@ -11,4 +11,11 @@ async function getData(url) {
   return data;
 }
 
-getData("../../public/content/test/pres.md");
+function splitSlide(data) {
+  const slide = data.split("---");
+  console.log(slide);
+  return slide;
+}
+
+const slides = splitSlide(await getData("../../public/content/test/pres.md"));
+console.log(markedDownToHtml(slides[1]));
