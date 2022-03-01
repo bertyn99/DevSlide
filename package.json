@@ -1,13 +1,14 @@
 {
   "name": "devslide",
-  "main":"dist/main.js",
+  "main":"src/electron/main.js",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "electron:start": "electron ."
+    "electron:start": "electron .",
+    "start": "node src/utils/start.js"
   },
   "dependencies": {
     "vue": "^3.2.25"
