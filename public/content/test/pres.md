@@ -1,18 +1,14 @@
-titre: bonjour
+
+# Hello World
+
 ---
-# slide 1 
 
-**tester** 
-
-```js
-    let hgueg = 1
-```
+# slide 1
 
 ---
 
 # slide 2
 
 ---
-# slide 3
 
----
+# slide 3
