@@ -1,0 +1,19 @@
+@use '../base/theme.scss' as theme;
+
+.homePage{
+    background-color: theme.$ternary-color;
+    height: 100vh;
+
+    &__title{
+        color: #252E34;
+        display: flex;
+        justify-content: center;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0;
+        padding-top: 27px;
+
+    }
+}
