@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
+const appMenu = require("./contextMenu.js");
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -16,6 +17,7 @@ function createWindow() {
     win.loadURL("file:../../dist/index.html");
   }
 }
+Menu.setApplicationMenu(Menu.buildFromTemplate(appMenu));
 
 app.whenReady().then(() => {
   createWindow();
