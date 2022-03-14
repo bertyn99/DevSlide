@@ -19,6 +19,21 @@ function createWindow() {
 }
 Menu.setApplicationMenu(Menu.buildFromTemplate(appMenu));
 
+const saveNewFile = async () => {
+  const open = await dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), {
+    title: "Ouvrir une présentation",
+    buttonLabel: "Ouvrir",
+  });
+  if (!open.canceled) {
+    return saveObject.filePath;
+  }
+  return null;
+};
+
+ipcMain.on("open-a-prez", async () => {
+  const file = await saveNewFile();
+  BrowserWindow.getFocusedWindow().webContents.send("new-file", file);
+});
 app.whenReady().then(() => {
   createWindow();
 
