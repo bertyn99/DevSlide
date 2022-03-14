@@ -9,6 +9,7 @@
     padding: 0px 24px ;
     margin: 87px 0px;
 
+
     &__title{
         color: #FFFF;
         display: flex;
@@ -19,14 +20,15 @@
         align-items: center;
     }
     &__icon{
-        height: 24px;
-        width: 24px;
+        height: 2rem;
+        width: 2rem;
         padding-left: 10px;
     }
     &__button{
         margin-top: 20px;
         height: 100px;
         width: 184px;
+        border-radius: 10px;
     }
 }
 
