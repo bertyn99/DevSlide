@@ -1,5 +1,6 @@
 // Bases
 @import "./base/theme.scss";
+@import "./base/reset.scss";
 
 // Pages
 @import "./pages/home.scss";
@@ -7,8 +8,3 @@
 // components
 @import "./components/createPres.scss";
 @import "./components/listPres.scss";
-
-
-body{
-    margin: 0px !important;
-}

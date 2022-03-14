@@ -1,0 +1,50 @@
+.list-container {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.37);
+  border-radius: 1rem;
+  min-height: 16rem;
+  padding: 1rem;
+  margin: 1rem 2rem;
+}
+.prez-items {
+  background-color: white;
+  opacity: 0.9;
+  max-height: 80%;
+  width: 7rem;
+  border-radius: 2rem;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+.prez-add {
+  & input[type="file"]::file-selector-button {
+    position: relative;
+    border: 2px solid #6c5ce7;
+    height: 8rem;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+    background-color: #a29bfe;
+    transition: 1s;
+  }
+  & .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 5rem;
+    height: 5rem;
+    color: #252e34;
+  }
+  & > button {
+    background-color: #252e34;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    border-radius: 1.2rem;
+    text-decoration: none;
+    border: none;
+    &:hover {
+      background-color: rgba(211, 207, 207, 0.973);
+    }
+  }
+}
