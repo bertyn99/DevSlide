@@ -8,3 +8,24 @@
 // components
 @import "./components/createPres.scss";
 @import "./components/listPres.scss";
+
+
+.navBarMain{
+    padding: 15px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    & h1{
+        color: #FFF;
+        font-family: "Roboto", sans-serif;
+        font-size: 21px;
+    }
+}
+
+.homeIcon{
+   width: 1.8rem; 
+   height: 1.8rem;
+   color: #FFF;
+}

@@ -1,14 +1,19 @@
 <script setup>
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+console.log("router");
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 </script>
 
 <template>
-  <nav>
-    <router-link to="/"
+  <nav class="navBarMain">
+    <h1>DevSlide</h1>
+    <router-link v-if="router.params.name == 'presentation'" to="/"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
+        class="homeIcon"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
