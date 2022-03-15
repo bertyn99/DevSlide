@@ -64,8 +64,12 @@ import { ref } from "@vue/reactivity";
 /* const { dialog } = require("electron"); */
 const pres = ref([""]);
 function loadPrezInMemory() {}
+function test(a) {
+  console.log(a);
+}
 
 function uploadPrez() {
-  window.api.sayHelloInBrowser();
+  console.log("vue");
+  window.api.openFile(test);
 }
 </script>

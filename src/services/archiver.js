@@ -1,9 +1,16 @@
-// require modules
-import fs from "fs";
-import archiver from "archiver";
-import extract from "extract-zip";
-import path from "path";
+//@ts-check
 
+// require modules
+const fs = require("fs");
+const archiver = require("archiver");
+const extract = require("extract-zip");
+const path = require("path");
+
+/**
+ * unzip a file
+ * @param {String} sourceFile path of origin
+ * @param {String} targetDir  path of destination
+ */
 async function unzip(sourceFile, targetDir) {
   try {
     await extract(sourceFile, {
@@ -77,4 +84,4 @@ unzip(
   "../../public/content"
 ); */
 
-toZip("../../public/content/test", "test.zip");
+module.exports = { unzip, convertToCodePrez, toZip };

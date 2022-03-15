@@ -1,4 +1,4 @@
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 const { createInterface } = require("readline");
 const os = require("os");
 
@@ -21,7 +21,17 @@ vite.stdout.pipe(process.stdout);
 vite.stderr.pipe(process.stderr);
 const relaunchElectron = () => {
   if (electron) {
-    electron.kill("SIGINT");
+    if (os.platform() === "win32") {
+      console.log(electron.pid);
+      electron.on("error", (err) => {
+        console.log(err);
+      });
+      /* exec("taskkill /pid " + electron.pid + " /T /F", (err, data) => {
+        console.log(err);
+      }); */
+    }
+    electron.kill();
+
     electron = null;
   }
   electron = spawn(cmd, ["run", "electron:start"]);

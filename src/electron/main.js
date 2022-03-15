@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path = require("path");
 const appMenu = require("./contextMenu.js");
 
@@ -19,20 +19,24 @@ function createWindow() {
 }
 Menu.setApplicationMenu(Menu.buildFromTemplate(appMenu));
 
-const saveNewFile = async () => {
-  const open = await dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), {
-    title: "Ouvrir une présentation",
-    buttonLabel: "Ouvrir",
-  });
-  if (!open.canceled) {
-    return saveObject.filePath;
-  }
-  return null;
+const openNewFile = async () => {
+  try {
+    const open = await dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), {
+      title: "Ouvrir une présentation",
+      buttonLabel: "Ouvrir",
+      properties: ["openFile"],
+    });
+
+    if (!open.canceled) {
+      return open.filePaths;
+    }
+    return null;
+  } catch (error) {}
 };
 
-ipcMain.on("open-a-prez", async () => {
-  const file = await saveNewFile();
-  BrowserWindow.getFocusedWindow().webContents.send("new-file", file);
+ipcMain.on("open-a-dialog", async (e) => {
+  const file = await openNewFile();
+  e.reply("selected-file", [file[0], app.getPath("temp")]);
 });
 app.whenReady().then(() => {
   createWindow();

@@ -1,4 +1,5 @@
-const { contextBridge } = require("electron");
+const { contextBridge, ipcRenderer } = require("electron");
+const { unzip, convertToCodePrez } = require("../services/archiver");
 window.addEventListener("DOMContentLoaded", () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector);
@@ -10,7 +11,17 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+const openFile = (callback) => {
+  ipcRenderer.send("open-a-dialog");
+  ipcRenderer.on("selected-file", (e, data) => {
+    unzip(data[0], data[1]);
+    console.log(data[1]);
+    callback(data);
+  });
+};
+
 contextBridge.exposeInMainWorld("api", {
   sayHelloInBrowser: () => console.log("Hello"),
   sayHelloInTerminal: () => process.stdout.write("Hello\n"),
+  openFile,
 });
