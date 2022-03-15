@@ -1,5 +1,5 @@
 const { contextBridge, ipcRenderer } = require("electron");
-const { unzip, convertToCodePrez } = require("../services/archiver");
+const { unzip, toZip } = require("../services/archiver");
 window.addEventListener("DOMContentLoaded", () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector);

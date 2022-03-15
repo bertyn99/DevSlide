@@ -1,5 +1,13 @@
 //@ts-check
 
+/**
+ * Archiver Module
+ *
+ * @module /archives.js
+ *
+ * @description Module qui réunis les fonction qiui permettent de  decompresser/compresser des fichier codePree
+ */
+
 // require modules
 const fs = require("fs");
 const archiver = require("archiver");
@@ -25,6 +33,11 @@ async function unzip(sourceFile, targetDir) {
 
 async function convertToCodePrez() {}
 
+/**
+ * Compresser un dossier et le transformer en codeprez
+ * @param {*} sourceDir
+ * @param {*} fileName
+ */
 async function toZip(sourceDir, fileName) {
   // create a file to stream archive data to.
   const output = fs.createWriteStream(
