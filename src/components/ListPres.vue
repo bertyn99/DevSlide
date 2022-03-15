@@ -20,7 +20,7 @@
       </button>
     </div>
     <div class="list-container">
-      <div v-for="p in pres" :key="p" class="prez-items">
+      <div v-for="p in state.listPres" :key="p" class="prez-items">
         <button class="deleteButton">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,13 +59,22 @@
 </template>
 
 <script setup>
-import { ref } from "@vue/reactivity";
+import { useRouter, useRoute } from "vue-router";
+import { ref, inject } from "vue";
 
 /* const { dialog } = require("electron"); */
 const pres = ref([""]);
+const router = useRouter();
+
+/* import store from "../store/index"; */
+const { state, setStateProp } = inject("state");
+state.listPres;
+
 function loadPrezInMemory() {}
+
 function test(a) {
-  console.log(a);
+  setStateProp("currentPres", a);
+  router.push("presentation");
 }
 
 function uploadPrez() {
