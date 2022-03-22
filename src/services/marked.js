@@ -1,12 +1,14 @@
-import { marked } from "marked";
-import { promises } from "fs";
-
+const { marked } = require("marked");
+const fs = require("fs/promises");
+//requiring path and fs modules
+const path = require("path");
+const os = require("os");
 function markedDownToHtml(data) {
   return marked(data);
 }
 
 async function getData(url) {
-  let data = await promises.readFile(url, "utf8");
+  let data = await fs.readFile(url, "utf8");
   console.log(data);
   return data;
 }
@@ -17,5 +19,4 @@ function splitSlide(data) {
   return slide;
 }
 
-const slides = splitSlide(await getData("../../public/content/test/pres.md"));
-console.log(markedDownToHtml(slides[1]));
+/* const slides = splitSlide(await getData("../../public/content/test/pres.md")); */
