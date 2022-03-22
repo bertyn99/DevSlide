@@ -4,7 +4,7 @@ import Presentation from "../pages/presentation.vue";
 
 const routes = [
   {
-    path: "",
+    path: "/",
     name: "home",
     component: Home,
   },
