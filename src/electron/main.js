@@ -1,4 +1,8 @@
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
+const {
+  default: installExtension,
+  VUEJS3_DEVTOOLS,
+} = require("electron-devtools-installer");
 const path = require("path");
 const appMenu = require("./contextMenu.js");
 
@@ -39,6 +43,9 @@ ipcMain.on("open-a-dialog", async (e) => {
   e.reply("selected-file", [file[0], app.getPath("temp")]);
 });
 app.whenReady().then(() => {
+  installExtension(VUEJS3_DEVTOOLS)
+    .then((name) => console.log(`Added Extension:  ${name}`))
+    .catch((err) => console.log("An error occurred: ", err));
   createWindow();
 
   app.on("activate", () => {
