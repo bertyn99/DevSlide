@@ -8,19 +8,23 @@ const prop = defineProps({
 const emits = defineEmits(["changeSlide"]);
 
 function nextSlide() {
-  if (currentSlide.value === prop.getSlideCount - 1) {
+  if (currentSlide.value+1 === prop.getSlideCount ) {
+    console.log("ici")
     currentSlide.value = 0;
+     console.log(currentSlide.value)
     emits("changeSlide", currentSlide.value);
+    return;
   }
 
   currentSlide.value += 1;
   emits("changeSlide", currentSlide.value);
 }
 
-function prevSLide() {
+function prevSlide() {
   if (currentSlide.value === 0) {
-    currentSlide.value = prop.getSlideCount - 1;
+    currentSlide.value = prop.getSlideCount -1;
     emits("changeSlide", currentSlide.value);
+    return;
   }
 
   currentSlide.value -= 1;
@@ -46,7 +50,7 @@ function prevSLide() {
         />
       </svg>
     </button>
-    <slot :currentSlide="currentSLide" />
+    <slot :currentSlide="currentSlide" />
     <button @click="nextSlide" class="carrousel_button">
       <svg
         xmlns="http://www.w3.org/2000/svg"

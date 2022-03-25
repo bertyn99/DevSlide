@@ -1,8 +1,9 @@
 <template>
-  <Carrousel @changeSlide="getChangeSLide" :getSlidesCount="nbSlide">
-    <Slide v-for="(n, i) in slides" :key="n" v-show="currentSlide == n">
+  <Carrousel  v-slot="{ currentSlide }" @changeSlide="getChangeSLide"  :getSlideCount="nbSlide">
+    <CarrouselSlide v-for="(n, i) in slides" :key="n+i" v-show="currentSlide == i">
+    
       {{ n }}{{ i }}
-    </Slide>
+    </CarrouselSlide>
   </Carrousel>
 </template>
 
