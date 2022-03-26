@@ -21,7 +21,6 @@ const openFile = (callback) => {
 };
 
 contextBridge.exposeInMainWorld("api", {
-  sayHelloInBrowser: () => console.log("Hello"),
   sayHelloInTerminal: () => process.stdout.write("Hello\n"),
   openFile,
 });
