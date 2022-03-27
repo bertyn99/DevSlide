@@ -19,4 +19,5 @@ function splitSlide(data) {
   return slide;
 }
 
+modules.exports = { markedDownToHtml, getData, splitSlide };
 /* const slides = splitSlide(await getData("../../public/content/test/pres.md")); */
