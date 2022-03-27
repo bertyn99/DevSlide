@@ -40,7 +40,10 @@ const openNewFile = async () => {
 
 ipcMain.on("open-a-dialog", async (e) => {
   const file = await openNewFile();
-  e.reply("selected-file", [file[0], app.getPath("temp")]);
+  e.reply("selected-file", [
+    file[0],
+    path.join(app.getPath("temp"), "devslide"),
+  ]);
 });
 app.whenReady().then(() => {
   installExtension(VUEJS3_DEVTOOLS)
