@@ -24,5 +24,7 @@
   width:100%;
   max-height: 100%;
   height:100%;
+  display:flex;
+  align-items: center;
 }
 </style>

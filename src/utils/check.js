@@ -101,7 +101,7 @@ async function getContentFile(dir, ext) {
   // TODO: get content of this file
 
   let data = await fs.readFile(path.join(dir, fileName), "utf8");
-  return;
+  return data;
 }
 
 /* try {

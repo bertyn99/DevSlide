@@ -7,9 +7,15 @@ function markedDownToHtml(data) {
   return marked(data);
 }
 
+/**
+ * split markdown slides
+ * @param {string} data
+ * @returns
+ */
 function splitSlide(data) {
-  const slide = data.split("---");
-  return slide;
+  const slides = data.split("---");
+  console.log(slides[0]);
+  return slides;
 }
 
 module.exports = { markedDownToHtml, splitSlide };
