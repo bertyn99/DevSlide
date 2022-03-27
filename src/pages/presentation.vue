@@ -3,8 +3,8 @@
 
   <Carrousel  v-slot="{ currentSlide }" @changeSlide="getChangeSLide"  :getSlideCount="nbSlide">
     <CarrouselSlide v-for="(n, i) in slides" :key="n+i" v-show="currentSlide == i">
-      <div>
-        {{ n }}{{ i }}
+      <div v-html="n">
+      
       </div>
      
     </CarrouselSlide>
@@ -31,8 +31,9 @@ async function loadFilePrez(){
  try {
    //load arkdown
   let markdown= await window.api.getContentFile(state.currentPres,'md')
-  slides.value=await window.api.splitSlide(markdown)
- 
+  
+  let tmp=await window.api.splitSlide(markdown)
+  slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm))
  //load css
   let style=await window.api.getContentFile(state.currentPres,'css')
 
