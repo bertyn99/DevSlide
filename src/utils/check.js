@@ -30,7 +30,7 @@ const hasMarkdownExtension = (filename) => {
  * @returns {String[]}
  */
 async function listFilesTmp(dir) {
-  const directoryPath = path.join(os.tmpdir(), path.join("codePrez", dir));
+  const directoryPath = dir;
   console.log(directoryPath);
   try {
     //passsing directoryPath and callback function
@@ -84,12 +84,33 @@ function checkFilePres(files) {
   return validCheckEnum == 3;
 }
 
-listFilesTmp("example-presentation").then((files) => {
-  console.log(files);
-  console.log(checkFilePres(files));
-});
+async function getContentFile(dir, ext) {
+  //* Done: check if ext is include in
+  if (!EXTENSIONS_CODEPRES.includes(ext)) return;
 
-listFilesTmp("example").then((files) => {
-  console.log(files);
-  console.log(checkFilePres(files));
-});
+  //* Done:  check if file with this extension exist in a file
+  let files = await listFilesTmp(dir);
+  let fileName;
+  for (const file of files) {
+    if (file.match(new RegExp(`\.${ext}$`, "gmi"))) {
+      fileName = file;
+      break;
+    }
+  }
+
+  // TODO: get content of this file
+
+  let data = await fs.readFile(path.join(dir, fileName), "utf8");
+  return;
+}
+
+/* try {
+  getContentFile(
+    path.join(os.tmpdir(), path.join("codePrez", "example-presentation")),
+    "css"
+  );
+} catch (error) {
+  console.log(error);
+} */
+
+module.exports = { listFilesTmp, getContentFile, exists, checkFilePres };
