@@ -73,7 +73,7 @@ state.listPres;
 function loadPrezInMemory() {}
 
 function test(a) {
-  setStateProp("currentPres", a);
+  setStateProp("currentPres",a);
   router.push("presentation");
 }
 
