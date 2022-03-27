@@ -2,10 +2,14 @@
 
 
   <Carrousel  v-slot="{ currentSlide }" @changeSlide="getChangeSLide"  :getSlideCount="nbSlide">
+  <div v-html="st">
+
+  </div>
     <CarrouselSlide v-for="(n, i) in slides" :key="n+i" v-show="currentSlide == i">
-      <div v-html="n">
+
+      <section v-html="n" >
       
-      </div>
+      </section>
      
     </CarrouselSlide>
   </Carrousel>
@@ -21,6 +25,8 @@ const { state, setStateProp } = inject("state");
 state.listPres;
 let page = ref(0);
 let slides = ref([]);
+let stringStyle=ref('');
+let st= computed(()=>{return stringStyle.value =! '' ? stringStyle.value.replace(/^/,"<style>").replace(/$/,"</style>"):''})
 
 const nbSlide = computed(() => slides.value.length);
 function getChangeSLide(slide) {
@@ -33,10 +39,12 @@ async function loadFilePrez(){
   let markdown= await window.api.getContentFile(state.currentPres,'md')
   
   let tmp=await window.api.splitSlide(markdown)
-  slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm))
+    tmp.forEach(elm => {
+     slides.value.push(window.api.markedDownToHtml(window.api.replaceUrlAssetsSlide(elm,state.currentPres)))
+    });
+  /* slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
  //load css
-  let style=await window.api.getContentFile(state.currentPres,'css')
-
+   stringStyle.value=await window.api.getContentFile(state.currentPres,'css')
   //load config
   let config=await window.api.getContentFile(state.currentPres,'json')
 
@@ -52,3 +60,7 @@ onMounted(async ()=>{
   await loadFilePrez()
 })
 </script>
+
+<style>
+
+</style>

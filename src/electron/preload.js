@@ -1,7 +1,11 @@
 const path = require("path");
 const { contextBridge, ipcRenderer } = require("electron");
 const { unzip, toZip } = require("../services/archiver");
-const { markedDownToHtml, splitSlide } = require("../services/marked.js");
+const {
+  markedDownToHtml,
+  splitSlide,
+  replaceUrlAssetsSlide,
+} = require("../services/marked.js");
 const { getContentFile, checkFilePres } = require("../utils/check");
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -31,4 +35,5 @@ contextBridge.exposeInMainWorld("api", {
   splitSlide,
   getContentFile,
   checkFilePres,
+  replaceUrlAssetsSlide,
 });
