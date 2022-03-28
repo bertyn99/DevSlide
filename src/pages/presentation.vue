@@ -44,13 +44,11 @@ async function loadFilePrez() {
     let tmp = await window.api.splitSlide(markdown);
    for (const slide of tmp) {
      let transformSlide=await window.api.replaceUrlAssetsSlide(slide, state.currentPres)
-     console.log(transformSlide)
+  
       slides.value.push(
         window.api.markedDownToHtml(transformSlide)    
       );
    }
-
-    console.log(slides.value[2]);
     // slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
     //
     //load css
