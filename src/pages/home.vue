@@ -4,7 +4,6 @@
       <h1 class="homePage__title"></h1>
     </div>
     <div>
-      <CreatePres />
       <ListPres />
     </div>
   </div>

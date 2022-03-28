@@ -8,10 +8,10 @@ const prop = defineProps({
 const emits = defineEmits(["changeSlide"]);
 
 function nextSlide() {
-  if (currentSlide.value+1 === prop.getSlideCount ) {
-    console.log("ici")
+  if (currentSlide.value + 1 === prop.getSlideCount) {
+    console.log("ici");
     currentSlide.value = 0;
-     console.log(currentSlide.value)
+    console.log(currentSlide.value);
     emits("changeSlide", currentSlide.value);
     return;
   }
@@ -22,7 +22,7 @@ function nextSlide() {
 
 function prevSlide() {
   if (currentSlide.value === 0) {
-    currentSlide.value = prop.getSlideCount -1;
+    currentSlide.value = prop.getSlideCount - 1;
     emits("changeSlide", currentSlide.value);
     return;
   }
@@ -51,7 +51,7 @@ function prevSlide() {
           />
         </svg>
       </button>
-       <button @click="nextSlide" class="left">
+      <button @click="nextSlide" class="left">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="carrousel_svg"
@@ -68,38 +68,6 @@ function prevSlide() {
         </svg>
       </button>
     </div>
-    <slot :currentSlide="currentSlide" />
-   
+    <slot @click="nextSlide" :currentSlide="currentSlide" />
   </div>
 </template>
-
-<style lang="scss">
-.carrousel__container{
-  position:relative;
-  max-width:100%;
-  max-height: calc(100vh - 50px);
-  height:100vh;
-
-  .carrousel_nav{
-    position:absolute;
-    top:50%;
-    left:0;
-    right:0;
-    max-width:100%;
-    display: flex;
-    justify-content: space-between;
-
-    & button{
-      z-index:2;
-      cursor: pointer;
-      width:2rem;
-      background: transparent;
-      border:none;
-    }
-    &.left{
-    
-   
-    }
-  }
-}
-</style>
