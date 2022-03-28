@@ -1,5 +1,5 @@
 section {
-    margin : 10px;
+    padding: 50px;
     background-color :rgb(37, 61, 167);
     color : white;
     display : flex;
@@ -15,6 +15,7 @@ section {
 
 h1 {
     text-decoration: underline;
+    margin-bottom: 50px;
 }
 
 img {
