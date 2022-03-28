@@ -23,6 +23,15 @@
         font-family: "Roboto", sans-serif;
         font-size: 21px;
     }
+    & button{
+        background-color: #252e34 !important;
+        border: none;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba(211, 207, 207, 0.973) !important;
+            border-radius: 50%;
+          }
+    }
 }
 
 .homeIcon{
