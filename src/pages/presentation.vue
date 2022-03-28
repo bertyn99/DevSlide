@@ -42,6 +42,8 @@ async function loadFilePrez(){
     tmp.forEach(elm => {
      slides.value.push(window.api.markedDownToHtml(window.api.replaceUrlAssetsSlide(elm,state.currentPres)))
     });
+
+    console.log(slides.value[2])
   /* slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
  //load css
    stringStyle.value=await window.api.getContentFile(state.currentPres,'css')
