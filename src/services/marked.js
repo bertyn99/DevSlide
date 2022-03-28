@@ -43,7 +43,7 @@ async function replaceUrlAssetsSlide(content, dir) {
         let interval = file.split("#")[1];
         let filePath = path.join(dir, fileName);
         let start = interval.split("-")[0] - 1;
-        let end = interval.split("-")[1] - 1;
+        let end = interval.split("-")[1];
         let data = await rFile(filePath, "code");
         let snippet = data.split("\n").slice(start, end).join("\n");
         let test = data.split("\n");
