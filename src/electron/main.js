@@ -32,7 +32,6 @@ const openNewFile = async () => {
     });
 
     if (!open.canceled) {
-      BrowserWindow.getFocusedWindow().setFullScreen(true);
       return open.filePaths;
     }
     return null;
@@ -45,6 +44,14 @@ ipcMain.on("open-a-dialog", async (e) => {
     file[0],
     path.join(app.getPath("temp"), "devslide"),
   ]);
+});
+
+ipcMain.on("fullScreenOn", (e) => {
+  BrowserWindow.getFocusedWindow().setFullScreen(true);
+});
+
+ipcMain.on("fullScreenOff", (e) => {
+  BrowserWindow.getFocusedWindow().setFullScreen(false);
 });
 app.whenReady().then(() => {
   installExtension(VUEJS3_DEVTOOLS)

@@ -19,11 +19,21 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+window.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "Escape":
+      console.log("escape");
+      ipcRenderer.send("fullScreenOff");
+      break;
+  }
+});
+
 const openFile = (callback) => {
   ipcRenderer.send("open-a-dialog");
   ipcRenderer.on("selected-file", (e, data) => {
     unzip(data[0], data[1]);
     console.log(data[1]);
+    ipcRenderer.send("fullScreenOn");
     callback(path.join(data[1], path.basename(data[0], ".codeprez")));
   });
 };
