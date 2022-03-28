@@ -42,16 +42,15 @@ async function loadFilePrez() {
     let markdown = await window.api.getContentFile(state.currentPres, "md");
 
     let tmp = await window.api.splitSlide(markdown);
-    tmp.forEach((elm) => {
+   for (const slide of tmp) {
+     let transformSlide=await window.api.replaceUrlAssetsSlide(slide, state.currentPres)
+  
       slides.value.push(
-        window.api.markedDownToHtml(
-          window.api.replaceUrlAssetsSlide(elm, state.currentPres)
-        )
+        window.api.markedDownToHtml(transformSlide)    
       );
-    });
-
-    console.log(slides.value[2]);
-    /* slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
+   }
+    // slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
+    //
     //load css
     stringStyle.value = await window.api.getContentFile(
       state.currentPres,

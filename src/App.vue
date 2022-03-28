@@ -1,8 +1,13 @@
 <script setup>
 import { useRouter, useRoute } from "vue-router";
-
+import { onMounted} from "vue"
 const router = useRouter();
+
 console.log(router);
+
+onMounted(()=>{
+  router.push({name:"home"})
+})
 </script>
 
 <template>
