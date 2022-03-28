@@ -32,6 +32,7 @@ const openNewFile = async () => {
     });
 
     if (!open.canceled) {
+      BrowserWindow.getFocusedWindow().setFullScreen(true);
       return open.filePaths;
     }
     return null;
