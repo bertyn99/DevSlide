@@ -50,25 +50,21 @@ async function loadFilePrez() {
       );
     });
 
-    console.log(slides.value[2])
-  /* slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
- //load css
-   stringStyle.value=await window.api.getContentFile(state.currentPres,'css')
-  //load config
-  let config=await window.api.getContentFile(state.currentPres,'json')
-
- } catch (error) {
-   console.log(error)
- }
-
+    console.log(slides.value[2]);
+    /* slides.value= tmp.map(elm=>window.api.markedDownToHtml(elm)) */
+    //load css
+    stringStyle.value = await window.api.getContentFile(
+      state.currentPres,
+      "css"
+    );
+    //load config
+    let config = await window.api.getContentFile(state.currentPres, "json");
+  } catch (error) {
+    console.log(error);
+  }
 }
-
-
-onMounted(async ()=>{
 
 onMounted(async () => {
   await loadFilePrez();
 });
 </script>
-
-<style></style>
